@@ -1,7 +1,19 @@
 import React, { Component } from "react";
-import Button from "./components/Button";
+import Ali, { Button as Fast, RedButton } from "./components/Button";
 
 class App extends Component {
+  state = {
+    name: "Ali Haider",
+    age: 21,
+  };
+
+  changeName = () => {
+    // this.state["name"] = "Bilal";
+    // console.log(this.state);
+
+    this.setState({ name: "Bilal" });
+  };
+
   render() {
     return (
       <>
@@ -20,9 +32,13 @@ class App extends Component {
             justifyContent: "center",
           }}
         >
-          <h1>Ali</h1>
+          <h1>{this.state.name}</h1>
+          <h1>{this.state.age}</h1>
         </div>
-        <Button></Button>
+        <button onClick={this.changeName}>Change Name</button>
+        <Ali></Ali>
+        <Fast></Fast>
+        <RedButton></RedButton>
         <h1>Bilal</h1>
         <div className="jumbotron">
           <h1 className="display-4">Happy Birthday Ali!</h1>
