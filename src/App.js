@@ -5,6 +5,7 @@ class App extends Component {
   state = {
     name: "Ali Haider",
     age: 21,
+    color: "blue",
   };
 
   changeName = () => {
@@ -12,6 +13,10 @@ class App extends Component {
     // console.log(this.state);
 
     this.setState({ name: "Bilal" });
+  };
+
+  changeColor = (color) => {
+    this.setState({ color: color });
   };
 
   render() {
@@ -35,10 +40,17 @@ class App extends Component {
           <h1>{this.state.name}</h1>
           <h1>{this.state.age}</h1>
         </div>
+        {/* <input placeholder value /> */}
         <button onClick={this.changeName}>Change Name</button>
         <Ali></Ali>
         <Fast></Fast>
-        <RedButton></RedButton>
+
+        <RedButton
+          change={(color) => this.changeColor(color)}
+          name={`I am ${this.state.color}`}
+          color={this.state.color}
+        ></RedButton>
+
         <h1>Bilal</h1>
         <div className="jumbotron">
           <h1 className="display-4">Happy Birthday Ali!</h1>

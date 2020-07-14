@@ -40,16 +40,17 @@ export class RedButton extends Component {
   render() {
     return (
       <button
+        onClick={() => this.props.change("green")}
         style={{
           width: 100,
           height: 50,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "red",
+          backgroundColor: this.props.color,
         }}
       >
-        <p>Red Button</p>
+        <p>{this.props.name}</p>
       </button>
     );
   }
