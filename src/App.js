@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import Ali, { Button as Fast, RedButton } from "./components/Button";
+import TodoListComponent from "./components/TodoListComponent";
 
 class App extends Component {
   state = {
     name: "Ali Haider",
     age: 21,
     color: "blue",
+    todo: [
+      { day: "monday", task: "play games" },
+      { day: "tuesday", task: "study hard" },
+      { day: "wednesday", task: "do some chores" },
+      { day: "thursday", task: "go shopping" },
+    ],
   };
 
   changeName = () => {
@@ -67,18 +74,15 @@ class App extends Component {
             Learn more
           </a>
         </div>
-        <div className="card" style={{ width: "18rem" }}>
-          <img src="..." className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" className="btn btn-primary">
-              Go somewhere
-            </a>
-          </div>
+
+        {/* todo display */}
+
+        <div style={{ margin: 20 }}>
+          {this.state.todo.map((item) => {
+            if (item.day == "tuesday") {
+              return <TodoListComponent task={item.task} day={item.day} />;
+            }
+          })}
         </div>
       </>
     );
