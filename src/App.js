@@ -9,10 +9,12 @@ class App extends Component {
     color: "blue",
     todo: [
       { day: "monday", task: "play games" },
+      { day: "monday", task: "play pubg pc" },
       { day: "tuesday", task: "study hard" },
       { day: "wednesday", task: "do some chores" },
       { day: "thursday", task: "go shopping" },
     ],
+    selectedDay: "",
   };
 
   changeName = () => {
@@ -77,9 +79,54 @@ class App extends Component {
 
         {/* todo display */}
 
-        <div style={{ margin: 20 }}>
+        <div style={{ width: "100%", display: "flex" }}>
+          <a
+            onClick={() => this.setState({ selectedDay: "" })}
+            style={{ marginLeft: 50 }}
+            className="btn btn-primary btn-lg"
+            role="button"
+          >
+            All
+          </a>
+          <a
+            onClick={() => this.setState({ selectedDay: "monday" })}
+            style={{ marginLeft: 50 }}
+            className="btn btn-primary btn-lg"
+            role="button"
+          >
+            Monday
+          </a>
+          <a
+            onClick={() => this.setState({ selectedDay: "tuesday" })}
+            style={{ marginLeft: 50 }}
+            className="btn btn-primary btn-lg"
+            role="button"
+          >
+            Tuesday
+          </a>
+          <a
+            onClick={() => this.setState({ selectedDay: "wednesday" })}
+            style={{ marginLeft: 50 }}
+            className="btn btn-primary btn-lg"
+            role="button"
+          >
+            Wednesday
+          </a>
+          <a
+            onClick={() => this.setState({ selectedDay: "thursday" })}
+            style={{ marginLeft: 50 }}
+            className="btn btn-primary btn-lg"
+            role="button"
+          >
+            Thursday
+          </a>
+        </div>
+        <div style={{ margin: 20, display: "flex" }}>
           {this.state.todo.map((item) => {
-            if (item.day == "tuesday") {
+            if (this.state.selectedDay == "") {
+              return <TodoListComponent task={item.task} day={item.day} />;
+            }
+            if (item.day == this.state.selectedDay) {
               return <TodoListComponent task={item.task} day={item.day} />;
             }
           })}
